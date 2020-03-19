@@ -22,17 +22,74 @@
 #### Documentation example
 ##### Meeting request
 Represents a request for a meeting in a calendar.
-| Element | Description | Type | Required | Notes |
-| ---     | ---         | ---  | --- | --- |
-| meeting | Top level | meeting object | Required | |
-| &nbsp; &nbsp; &nbsp; time | The time of the meeting | string | Required |Time is GMT. Format is `YYYY-MM-DD HH:MM:SS`. |
-| &nbsp; &nbsp; &nbsp; duration | The duration of the meeting in minutes | number | Required | Example: `60` |
-| &nbsp; &nbsp; &nbsp; description | The description of the meeting | string | Required | |
-| &nbsp; &nbsp; &nbsp; location | The location of the meeting | string | Optional | Default: `""` |
-| &nbsp; &nbsp; &nbsp; reminder | A reminder for the meeting in minutes | number | Optional | Default: `10` |
-| &nbsp; &nbsp; &nbsp; invitees | List of invitees emails | array | Optional | Default: `[]` |
-
-
+<table>
+   <thead>
+        <tr>
+            <th colspan=2>Element</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan=2>meeting</td>
+            <td>Top level</td>
+            <td>string</td>
+            <td>Required</td>
+            <td />
+        </tr>
+        <tr>
+            <td></td>
+            <td>time</td>
+            <td>The time of the meeting</td>
+            <td>meeting object</td>
+            <td>Required</td>
+            <td>Time is GMT. Format is YYYY-MM-DD HH:MM:SS. </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>duration</td>
+            <td>The duration of the meeting in minutes</td>
+            <td>number</td>
+            <td>Required</td>
+            <td>Example: 60 </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>location</td>
+            <td>The location of the meeting </td>
+            <td>string</td>
+            <td>Optional</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>description</td>
+            <td>The description of the meeting </td>
+            <td>string</td>
+            <td>Required</td>
+            <td>Default: ""</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>reminder</td>
+            <td>A reminder for the meeting in minutes</td>
+            <td>number</td>
+            <td>Optional</td>
+            <td>Default: 10</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>invitees</td>
+            <td>List of invitees emails</td>
+            <td>array</td>
+            <td>Optional</td>
+            <td>Default: []</td>
+        </tr>
+    </tbody>
+</table>
 
 ## 2. Describing a menu
 #### Original menu JSON
