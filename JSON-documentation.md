@@ -132,13 +132,59 @@ Represents a request for a meeting in a calendar.
 }
 ```
 #### Documentation example
-| Element | Description | Type | Required | Notes |
-| ---     | ---         | ---  | --- | --- |
-| comment | Top level | comment data object | Required | |
-| &nbsp; &nbsp; &nbsp; userId | The id of the user making the comment | string | Required | |
-| &nbsp; &nbsp; &nbsp; discussionId | The ID of the discussion that is being commented on | number | Required | |
-| &nbsp; &nbsp; &nbsp; time | The time the comment was posted | string | Optional |Time is GMT. Format is YYYY-MM-DD HH:MM:SS. Default is the time the comment is received by the server. |
-| &nbsp; &nbsp; &nbsp; text | The text of the comment | string | Required | |
+<table>
+   <thead>
+        <tr>
+            <th colspan=2>Element</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan=2>comment</td>
+            <td>Top level</td>
+            <td>comment data object</td>
+            <td>Required</td>
+            <td />
+        </tr>
+        <tr>
+            <td></td>
+            <td>userId</td>
+            <td>The id of the user making the comment</td>
+            <td>string</td>
+            <td>Required</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>discussionId</td>
+            <td>The ID of the discussion that is being commented on</td>
+            <td>number</td>
+            <td>Required</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>time</td>
+            <td>The time the comment was posted </td>
+            <td>string</td>
+            <td>Optional</td>
+            <td>Time is GMT. Format is YYYY-MM-DD HH:MM:SS. Default is the time the comment is received by the server.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>text</td>
+            <td>The text of the comment </td>
+            <td>string</td>
+            <td>Required</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
 
 ## Describing a song
 
