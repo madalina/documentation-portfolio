@@ -1,4 +1,5 @@
 ## 1. Describing a meeting request
+
 #### Original requirements
 ```
 {
@@ -12,13 +13,14 @@
              }
 }
 ```
-_Notes:
-• time is GMT.
-• location is optional. The default is an empty string.
-• reminder is optional. The default is 10 minutes.
-• invitees is optional. The default is an empty array._
+*Notes:*
+- *time is GMT.*
+- *location is optional. The default is an empty string.*
+- *reminder is optional. The default is 10 minutes.*
+- *invitees is optional. The default is an empty array.*
 
-#### Meeting request
+#### Documentation example
+##### Meeting request
 Represents a request for a meeting in a calendar.
 | Element | Description | Type | Required | Notes |
 | ---     | ---         | ---  | --- | --- |
