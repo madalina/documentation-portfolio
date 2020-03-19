@@ -9,4 +9,4 @@ Here are some samples of documentation work that I've done, that is in the publi
    - Swagger UI for [this REST API](https://stark-brushlands-58685.herokuapp.com/api/v1/?fbclid=IwAR0o2XF4g0WLvmdc_3mahMy4f9IjZb1l2cYIROoz_SGRwJdogrI1Z2_Ld3A)
 
 ### Samples of JSON documentation
-- [Simple JSON documentation](../json-documentation)
+- [Simple JSON documentation](../JSON-documentation)
