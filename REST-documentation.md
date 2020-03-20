@@ -1,7 +1,7 @@
-## Documenting an API for a dating service for people who care about how their dates sound, not how they look
+## 1. Documenting an API for a dating service for people who care about how their dates sound, not how they look
 This is the documentation for a service called SoundDate. This is the provided information needed to document the request for a user to upload a sound file to their own profile and to get information on sound files for another users’s profile.
 
-#### 1. Uploading a Sound File to the current User’s Profile
+#### 1.1. Uploading a Sound File to the current User’s Profile
 
 1. The server address is https://api.sounddate.com
 2. The resource is /profile/sound
@@ -60,7 +60,7 @@ Accept: application/json
 
 ----
 
-#### 2. Retrieving Sound File Information for a User
+#### 1.2. Retrieving Sound File Information for a User
 1. The server address is https://api.sounddate.com
 2. The resource is /user/{user id}/profile/sound.
 3. The method is GET
@@ -90,17 +90,81 @@ Accept: application/json
  ]
 }
 ```
+----
+### GET /sound
+Retrieves a list of profile sound file URLs and their lengths for the specified user.
 
-#### 3. Status Codes and Errors
+##### URL
+```GET https://api.sounddate.com/user/{userId}/profile/sound```
+where `userId` is the ID of the specified user.
+
+#### Query parameters
+| Parameter | Description | Type | Required | Notes |
+| ---     | ---         | ---  | ---   | --- |
+| sortOrder | The order in which the sound files are returned. | string | Optional | Valid values: `mostRecent`, `earliest`, `shortest`,`longest`. Default is `mostRecent`.
+
+**Note:**
+- `mostRecent` returns the most recent sound files to the earliest.
+- `earliest` returns the earliest sound files to the most recent.
+- `shortest` returns the shortest sound files to longest.
+- `longest` returns the longest sound files to the shortest.
+
+
+##### Headers
+| Header Name | Description | Required | Notes |
+| ---         | ---         | ---      | ---   |
+| Bearer | Access token | Required | |
+| Accept | The format of the response | Optional |  `application/xml` or `application/json`. Default is `application/json`.
+
+##### Sample request
+```
+GET https://api.sounddate.com/user/1234/profile/sound?sortOrder=shortest
+Bearer: {access token}
+Accept: application/json
+```
+##### Response
+| Element | Description | Type | Notes |
+| --- | --- | --- | ---|
+| soundFiles | List of sound file information. Top element. | array | |
+| &nbsp; &nbsp; &nbsp; id | The ID of the sound file. | integer | |
+| &nbsp; &nbsp; &nbsp; url | The URL of the sound file. | string | |
+| &nbsp; &nbsp; &nbsp; length | The length of the sound file in seconds. | float | |
+
+##### Sample response
+```
+{
+ "soundFiles": [
+ {
+ "id": 23456,
+ "url": "https://api.sounddate.com/profile/sound/23456.mp3",
+ "length": 11.2
+ },
+ {
+ "id": 24559,
+ "url": "https://api.sounddate.com/profile/sound/24559.mp3",
+ "length": 19.8
+ }
+ ]
+}
+```
+----
+#### 1.3. Status Codes and Errors
 1. 200, success for both POST and GET
 2. 401, access token is no good
 3. 413, sound file that was POSTed was too long
 
+----
+| Code | Description | Notes
+| --- | --- | --- |
+| 200 | OK | Success |
+| 401 | Unauthorized | The access token is invalid. |
+| 413 | Request entity too large | The uploaded sound file was longer than 5 minutes.|
 
 
-## Snippets from an API for sharing and printing photos
 
-#### 1. Document methods and URLs for API requests
+## 2. Snippets from an API for sharing and printing photos
+
+#### 2.1. Document methods and URLs for API requests
 Document the method and URL of API requests for creating an online photo album. Here's the information from the development team:
 - The server location is https://phantasticfoto.com/api/v1/
 - The resource name is album.
@@ -153,7 +217,7 @@ POST https://phantasticfoto.com/api/v1/album/print/{album ID}
 where `{album ID}` is the ID of the album to be printed.
 
 
-#### 2. Document headers for the request that uploads a photo
+#### 2.2. Document headers for the request that uploads a photo
 
 Requirements from the developers:
 - The format for the photo is specified with the Content-Type header. Valid values are: image/jpeg, image/png, and image/gif. Default is image/jpeg.
@@ -176,7 +240,7 @@ Content-Type image/jpeg
 Accept: application/json
 POST body is a photo
 ```
-#### 3. Document status codes
+#### 2.3. Document status codes
 Description from developers:
 - 200. Success.
 - 401. The access token is not valid for this resource.
