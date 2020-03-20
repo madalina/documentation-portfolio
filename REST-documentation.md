@@ -1,8 +1,14 @@
-## 1. Documenting an API for a dating service for people who care about how their dates sound, not how they look
-This is the documentation for a service called SoundDate. This is the provided information needed to document the request for a user to upload a sound file to their own profile and to get information on sound files for another users’s profile.
+# Snippets of REST documentation 
+## 1. Reference documentation of an API for a dating service
+This is the documentation for a service called SoundDate, for people who care about how their dates sound, not how they look. 
 
-#### 1.1. Uploading a Sound File to the current User’s Profile
+This is the provided information needed to document 2 requests and the error codes:
+- request for a user to upload a sound file to their own profile and 
+- request to get information on sound files for another users’s profile
+- error codes
 
+### Description: Uploading a Sound File to the current User’s Profile
+Here's the information from the development team:
 1. The server address is https://api.sounddate.com
 2. The resource is /profile/sound
 3. The method is POST
@@ -17,8 +23,9 @@ This is the documentation for a service called SoundDate. This is the provided i
     b. length: A float, which is the length of the sound file, in seconds
 8. Don’t put in a Status and Errors table. We’ll have one for the entire documentation set
 
-----
-### POST /sound
+### Documentation: Uploading a Sound File to the current User’s Profile
+
+### `POST /sound`
 Uploads a sound file for the user's profile.
 
 ##### URL
@@ -57,10 +64,8 @@ Accept: application/json
     "length": 20.3
 }
 ```
-
-----
-
-#### 1.2. Retrieving Sound File Information for a User
+### Description: Retrieving Sound File Information for a User
+Here's the information from the development team:
 1. The server address is https://api.sounddate.com
 2. The resource is /user/{user id}/profile/sound.
 3. The method is GET
@@ -90,8 +95,9 @@ Accept: application/json
  ]
 }
 ```
-----
-### GET /sound
+
+### Documentation: Retrieving Sound File Information for a User
+### `GET /sound`
 Retrieves a list of profile sound file URLs and their lengths for the specified user.
 
 ##### URL
@@ -147,13 +153,14 @@ Accept: application/json
  ]
 }
 ```
-----
-#### 1.3. Status Codes and Errors
+
+### Description: Status Codes and Errors
+Here's the information from the development team:
 1. 200, success for both POST and GET
 2. 401, access token is no good
 3. 413, sound file that was POSTed was too long
 
-----
+### Documentation: Status Codes and Errors
 | Code | Description | Notes
 | --- | --- | --- |
 | 200 | OK | Success |
@@ -161,11 +168,11 @@ Accept: application/json
 | 413 | Request entity too large | The uploaded sound file was longer than 5 minutes.|
 
 
+## 2. Snippets of reference documentation from an API for sharing and printing photos
 
-## 2. Snippets from an API for sharing and printing photos
+Here's the information from the development team:
 
-#### 2.1. Document methods and URLs for API requests
-Document the method and URL of API requests for creating an online photo album. Here's the information from the development team:
+#### 1. Document the methods and URL of API requests for managing an online photo album
 - The server location is https://phantasticfoto.com/api/v1/
 - The resource name is album.
 - An album is a collection of images.
@@ -174,7 +181,21 @@ Document the method and URL of API requests for creating an online photo album. 
 - You can also get a list of all albums with GET where you don't specify the ID.
 - Also, you can print an album using the endpoint album/print and a POST method.
 
-Documentation: 
+#### 2. Document headers for the request that uploads a photo
+- The format for the photo is specified with the Content-Type header. Valid values are: image/jpeg, image/png, and image/gif. Default is image/jpeg.
+- The format of the returned data is specified with the Accept header. Valid values are: application/json and application/xml. Default is application/json.
+- The authorization token is specified with a query parameter, so you don't need a header for that.
+- The server address is https://phantasticFoto/api/v1/
+- The method is POST and the resource is photo
+
+#### 3. Document status codes
+- 200 Success.
+- 401 The access token is not valid for this resource.
+- 403 The number of API requests per month has been exceeded.
+- 404 The resource name or ID is not valid.
+
+
+#### Documentation: 
 
 **Retrieve an album**
 Returns data about the specified collection of images.
@@ -216,23 +237,13 @@ POST https://phantasticfoto.com/api/v1/album/print/{album ID}
 ```
 where `{album ID}` is the ID of the album to be printed.
 
-
-#### 2.2. Document headers for the request that uploads a photo
-
-Requirements from the developers:
-- The format for the photo is specified with the Content-Type header. Valid values are: image/jpeg, image/png, and image/gif. Default is image/jpeg.
-- The format of the returned data is specified with the Accept header. Valid values are: application/json and application/xml. Default is application/json.
-- The authorization token is specified with a query parameter, so you don't need a header for that.
-- The server address is https://phantasticFoto/api/v1/
-- The method is POST and the resource is photo
-
-Documentation:
+**Headers**
 |  Header Name | Description | Required | Values |
 | ---          | ---         | ---      | ---    |
 | Content-Type | The format of the photo. | Optional | Valid values are: `image/jpeg`, `image/png`, and `image/gif`. Default is `image/jpeg` |
 | Accept | The format of the returned data. | Optional | `application/json` and `application/xml`. Default is `application/json`|
 
-###### Sample request
+**Sample request**
 This example request uploads a photo in JPEG format and returns data in JSON format. 
 ```
 POST "https://phantasticFoto/api/v1/photo"
@@ -240,14 +251,8 @@ Content-Type image/jpeg
 Accept: application/json
 POST body is a photo
 ```
-#### 2.3. Document status codes
-Description from developers:
-- 200. Success.
-- 401. The access token is not valid for this resource.
-- 403. The number of API requests per month has been exceeded.
-- 404. The resource name or ID is not valid.
 
-Documentation:
+**Status and error codes**
 | Code | Description | Notes
 | --- | --- | --- |
 | 200 | OK | Success |
