@@ -5,12 +5,16 @@ info:
   title: Blog API
   description: "Simple API server that is able do CRUD operations on a MongoDB and authenticate users using JWT tokens. The current implementation immitates blog api.  <br /> <br /> The sections below provide reference documentation for the endpoints in the Blog REST API.  To make a request:<br /> <ol> <li>Expand an <b>endpoint</b>. </li> <li>Click <b>Try it out</b>. </li> <li>Customize the request body parameter.</li> <li>Click <b>Execute</b>. You will see the cURL request submitted to the API server and the corresponding response.</li></ol>"
 servers:
-  - url: http://localhost:5000/api/v1
-    description: Local server
+  - url: "http://localhost:5000/api/v1"
+    description: "Local server"
+  - url: "https://stark-brushlands-58685.herokuapp.com/api/v1"
+    description: "Production server"
 
 tags:
 - name: "Users"
   description: "User management"
+- name: "Posts"
+  description: "Blog post management"
 
 paths:
   /users/register:
@@ -29,7 +33,14 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/User'
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: "success"
+                    message:
+                      type: string
+                      example: "User added successfully"
           "422":
             description: "Validation error"
 
@@ -50,9 +61,152 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserListResponse'
+                title: "User list response"
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "user list found"
+                  data:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                            title: "User response"
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: "5e711a37d1e2f09b068ca714"
+                              name:
+                                type: string
+                                example: "Madi"
+                              email:
+                                type: string
+                                example: "email@example.com"
+  /users/authenticate:
+    post:
+      tags: [Users]
+      summary: "Authenticate an user"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+              
+      responses:
+        200:
+          description: "Successful authentication request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: 
+                    type: string
+                    example: "success"
+                  message: 
+                    type: string
+                    example: "user authenticated"
+                  data:
+                    type: object
+                    properties:
+                      id: 
+                        type: string
+                        example: "5e74ba6c71f88c2953091aa3"
+                      name: 
+                        type: string
+                        example: "username"
+                      token: 
+                        type: string
+                        example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNzRiYTZjNzFmODhjMjk1MzA5MWFhMyIsImlhdCI6MTU4NDcwODIyMSwiZXhwIjoxNTg0Nzk0NjIxfQ.OiPTtJzr9nCwtxh3i279MLYcBuq4nAzgieff46NeQrQ"
+                      "expiration": 
+                        type: string
+                        example: '2020-03-21T12:43:41.698Z'
+        401:
+          description: "Unauthorized. Invalid credentials"
+  /users/recover:
+    post:
+      tags: [Users]
+      summary: "Recover user password"
+      description: "This allows users to reset their forgotten password. <ul><li>It generates a token with a short lifespan.</li> <li>It sends the token to the user as a link: https://domain/reset?token=12345.</li> <li>It saves the token in the database.</li></ul>"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                    type: string
+                    required: true
+                recoveryToken:
+                    type: string
+                    required: true
+                password:
+                    type: string
+                    required: true
+      responses:
+        200:
+          description: "Successful request. Recovery email sent."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "email sent"           
+  /users/reset:
+    post:
+      tags: [Users]
+      summary: "Reset user password"
+      description: "This allows the reset of forgotten user password: <ul><li>It checks if the user and the token are legit and not expired. </li> <li>It updates the password in the database if the previous checks pass.</li></ul> <br /><b>Note:</b>This request requires a valid token, therefore it depends on the user receiving the email sent by the post/recover request and clicking on the link."
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                  email:
+                    type: string
+                    required: true
+      responses:
+        200:
+          description: "Password successfully reset."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/200"
 components:
   schemas:
+    "200":
+      type: object
+      title: "Success"
+      properties:
+        status:
+          type: string
+          example: "success"
+        message:
+          type: string
+          example: "password reset"
     User:
       title: "Create a new user"
       type: object
@@ -79,37 +233,3 @@ components:
         recoveryTokenExp:
           type: string
           description: "An ISO date representing the password token expiry date."
-    
-    UserResponse:
-      title: "User response"
-      type: object
-      properties:
-        id:
-          type: string
-          example: "5e711a37d1e2f09b068ca714"
-        name:
-          type: string
-          example: "Madi"
-        email:
-          type: string
-          example: "email@example.com"
-    UserListResponse:
-      title: "User list response"
-      type: object
-      properties:
-        status:
-          type: string
-          example: "success"
-        message:
-          type: string
-          example: "user list found"
-        data:
-          type: object
-          properties:
-            users:
-              type: array
-              items:
-                  $ref: "#/components/schemas/UserResponse"
-externalDocs:
-  description: Documentation and main site (TBD)
-  url: https://sunrise-sunset.org/api
