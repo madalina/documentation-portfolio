@@ -1,7 +1,7 @@
 
 # Samples of technical writing
 
-I would love to be able to share some of the internal technical documentation and software release notes with you, but unfortunately, they are not in the public domain. However, I can share a couple of working samples of documentation work that I've done on open source projects, as well as individual snippets.
+Here are some samples of documentation work that I've done, that is in the public domain.
 
 ## Samples of REST API documentation
 1. Node REST API for a blog (open source collaboration, ongoing):
@@ -25,3 +25,5 @@ I would love to be able to share some of the internal technical documentation an
 
 <img src ="/images/community_feedback.png" alt = "Community feedback" title = "Community feedback" width = "50%" />
 
+## Web application wireflow
+<img src ="/images/wireflow.png" alt = "Web app wireflow" title = "Web app wireflow" width = "50%" />
