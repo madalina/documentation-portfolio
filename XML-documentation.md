@@ -112,26 +112,26 @@
 #### Documentation example
 
 
-###### Top Level
-| Element | Description | Type |
-| --- | --- | --- |
+#### Top Level
+| Element   | Description                               | Type              |
+| --------- | ----------------------------------------- | ----------------- |
 | dailyData | Temperature and humidity data for one day | dailyData element |
 
-###### dailyData element: Represents temperature and humidity data for one day
-| Element | Description | Type | Notes |
-| --- | --- | --- | --- |
-| date | The date when the temperature data was taken| string | Format: YYYY-MM-DD|
-| hourlyData | Temperature and humidity data for one hour| hourlyData element |
+#### dailyData element: Represents temperature and humidity data for one day
+| Element    | Description                                 | Type               | Notes             |
+| ---------- | ------------------------------------------- | ------------------ | ----------------- |
+| date       | The date when the temperature data was taken| string             | Format: YYYY-MM-DD|
+| hourlyData | Temperature and humidity data for one hour  | hourlyData element |                   |
 
-###### hourlyData element: Represents temperature and humidity data for one hour
-| Element | Description | Type | Notes |
-| --- | --- | --- | --- |
-| time | The local time that the temperature was taken | string | Format: HH:MM |
-| device | One or more device objects with data from each device | device element |
+#### hourlyData element: Represents temperature and humidity data for one hour
+| Element| Description                                           | Type           | Notes         |
+| ------ | ----------------------------------------------------- | -------------- | ------------- |
+| time   | The local time that the temperature was taken         | string         | Format: HH:MM |
+| device | One or more device objects with data from each device | device element |               |
 
-###### device element: Temperature and himidity data from a device
-| Element | Description | Type
-| --- | --- | --- | --- |
-| id | The device's id | number |
+#### device element: Temperature and himidity data from a device
+| Element     | Description                                      | Type   |
+| -------     | ------------------------------------------------ | -----  |
+| id          | The device's id                                  | number |
 | temperature | The measured temperature in degrees Fahrenheit.  | number |
-| humidity | The measured humidity in percentage. | number |
+| humidity    | The measured humidity in percentage.             | number |

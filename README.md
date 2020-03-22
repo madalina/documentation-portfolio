@@ -1,7 +1,7 @@
 
 # Samples of technical writing
 
-Here are some samples of documentation work that I've done, that is in the public domain.
+I would love to be able to share some of the internal technical documentation and software release notes with you, but unfortunately, they are not in the public domain. However, I can share a couple of working samples of documentation work that I've done on open source projects, as well as individual snippets.
 
 ## Samples of REST API documentation
 1. Node REST API for a blog (open source collaboration, ongoing):
