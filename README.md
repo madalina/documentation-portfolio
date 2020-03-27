@@ -8,6 +8,7 @@ I would love to be able to share some of the internal technical documentation an
 3. [Samples of XML documentation](#samples-of-xml-documentation)
 4. [Samples of process and workflow diagrams](#samples-of-process-and-workflow-diagrams)
 5. [Web application wireflow](#web-application-wireflow)
+6. [Exernal user documentation](#external-user-documentation)
 
 ## Samples of REST API documentation
 1. Node REST API for a blog (open source collaboration, ongoing):
@@ -33,3 +34,10 @@ I would love to be able to share some of the internal technical documentation an
 
 ## Web application wireflow
 <img src ="/images/wireflow.png" alt = "Web app wireflow" title = "Web app wireflow" width = "50%" />
+
+## Confluence user documentation
+
+<img src ="/images/totara_confluence_sample.png" alt = "Confluence user docs sample" title = "Confluence user docs sample" width = "100%" />
+
+- [FAQ Page](https://help.totaralearning.com/display/TPD/Issue+tracker+FAQs)
+- [Products high level description and roadmap](https://help.totaralearning.com/display/TPD/Totara+Product+Roadmaps)
