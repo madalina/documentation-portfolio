@@ -8,7 +8,7 @@ I would love to be able to share some of the internal technical documentation an
 3. [Samples of XML documentation](#samples-of-xml-documentation)
 4. [Samples of process and workflow diagrams](#samples-of-process-and-workflow-diagrams)
 5. [Web application wireflow](#web-application-wireflow)
-6. [Exernal user documentation](#external-user-documentation)
+6. [Confluence user documentation](#confluence-user-documentation)
 
 ## Samples of REST API documentation
 1. Node REST API for a blog (open source collaboration, ongoing):
